@@ -1,15 +1,166 @@
+.container {
+  max-width: 800px; /* Set a max-width for the container */
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align children centrally */
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px; /* Space below the header */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Full width within the container */
+  max-width: 400px; /* Max width of form */
+  align-items: center; /* Align form items centrally */
+}
+
+input[type="text"],
+input[type="number"],
+button {
+  width: 100%; /* Full width within the form */
+  max-width: 350px; /* Max width of form elements */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  width: auto; /* Adjust button width */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
 table {
-    border-collapse: collapse;
-    width: 100%;
+  width: 100%; /* Full width within the container */
+  max-width: 700px; /* Max width of the table */
+  margin-top: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-radius: 5px; /* Round corners for each cell */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {background-color: #f5f5f5;}
+
+.logout-button {
+  background-color: #0056b3;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px; /* Add space between the table and the logout button /
+  align-self: center; / Center the logout button */
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
   }
-  
-  th, td {
-    border: 1px solid black;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
+
+
+/* Set a max-width for the form and center it */
+.form-container {
+  max-width: 600px; /* Adjust the max-width as needed */
+  margin: 0 auto; /* This will center the form */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds a gap between your form elements */
+}
+
+/* Set a max-width for the table and center it */
+.stock-table-container {
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 20px auto; /* This will center the table and add some margin from the top and bottom */
+  overflow-x: auto; /* Allows for a horizontal scroll on smaller screens */
+}
+
+/* Additional styles for table cells to ensure padding and readability */
+.stock-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-table-container th,
+.stock-table-container td {
+  text-align: left;
+  padding: 8px; /* Adjust padding for spacing */
+  border-bottom: 1px solid #ddd; /* Optional: adds a line between rows */
+}
+
+/* Header style */
+.header {
+  text-align: center; /* Centers the header text */
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-top: 20px; /* Adds some space above the header */
+}
+
+/* Ensure that the logout button is not stretched and is aligned to the center below the table */
+.logout-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logout-button-container button {
+  padding: 10px 20px; /* Adjust padding for button size */
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners for the button */
+}
+
+/* Add a slight shadow to the table for depth (optional) */
+.stock-table-container table {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.stock-table-container table:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Rounded corners for the table */
+.stock-table-container table {
+  border-radius: 10px;
+  overflow: hidden; /* This makes sure the inner elements adhere to the border radius */
+}
+
+/* Ensures the table header sticks to the top (optional) */
+.stock-table-container thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+}
+

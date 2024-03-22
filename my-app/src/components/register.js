@@ -1,6 +1,7 @@
 // Register.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './register.css';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -19,6 +20,7 @@ function Register() {
     try {
       const response = await fetch('https://mcsbt-stockapp.ey.r.appspot.com/register', { 
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -65,7 +67,7 @@ function Register() {
             Confirm Password:
             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
           </label>
-          <button type="submit">Register</button>
+          <button className="register-button" type="submit">Register</button>
         </form>
       )}
     </div>

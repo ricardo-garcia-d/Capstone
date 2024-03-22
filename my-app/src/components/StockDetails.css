@@ -1,0 +1,16 @@
+.details-layout {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .table-container {
+    flex: 1;
+    /* Apply any necessary styling, like margin or padding */
+    margin-right: 20px; /* for example */
+  }
+  
+  .graph-container {
+    flex: 1;
+    /* Apply any necessary styling, like margin or padding */
+  }
+  

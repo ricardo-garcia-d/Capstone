@@ -40,13 +40,11 @@ function Login({ onLogin }) {
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
-        <label>
-          Username:
-          <input type="text" name="username" value={credentials.username} onChange={handleChange} />
+        <label>  
+          <input type="text" name="username" value={credentials.username} onChange={handleChange} placeholder="user" />
         </label>
-        <label>
-          Password:
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} />
+        <label>  
+          <input type="password" name="password" value={credentials.password} onChange={handleChange} placeholder="password" />
         </label>
         <button type="submit">Login </button>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -61,6 +59,7 @@ export default Login;
 async function loginUser(credentials) {
   const response = await fetch('https://mcsbt-stockapp.ey.r.appspot.com/login', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },

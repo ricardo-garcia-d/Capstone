@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Portfolio from './components/Portfolio';
 import Login from './components/Login';
 import Register from './components/register'; // Ensure this import matches your file structure
+import StockDetails from './components/StockDetails';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,6 +33,7 @@ function App() {
           <Route path="/" element={isAuthenticated ? <Navigate replace to="/Portfolio" /> : <Login onLogin={login} />} />
           <Route path="/register" element={isAuthenticated ? <Navigate replace to="/Portfolio" /> : <Register />} />
           <Route path="/Portfolio" element={isAuthenticated ? <Portfolio logout={logout} /> : <Navigate replace to="/" />} />
+          <Route path="/stock/:symbol" element={<StockDetails />} />
         </Routes>
       </div>
     </Router>
