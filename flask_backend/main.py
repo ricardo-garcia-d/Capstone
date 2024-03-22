@@ -9,10 +9,11 @@ import requests
 from datetime import datetime
 from models import db
 from flask import current_app
+from flask import session
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 #API_KEY = "ASDIVE6SCAN0YYZO"
 API_KEY = "PZNQSKBY7F4YB4E8"
 
@@ -29,7 +30,9 @@ app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'poolclass': NullPool
 }
 app.config['SQLALCHEMY_ECHO'] = True
-
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] =True
+app.config['SECRET_KEY'] = 'POTATO'
 
 with app.app_context():
     from models import User, Stock, UserStock
@@ -64,6 +67,7 @@ def login():
 
     user = User.query.filter_by(username=username).first()
     if user and check_password_hash(user.password, password):
+        session['user_id'] = user.id
         return jsonify({'success': True, 'message': 'Login successful', 'user_id': user.id}), 200
     else:
         return jsonify({'success': False, 'message': 'Invalid credentials'}), 401
@@ -207,6 +211,24 @@ def get_user_stocks():
             })
 
     return jsonify(stocks_data), 200
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    if 'user_id' in session:
+        session.clear()
+        return jsonify({'message': 'Logged out Successfully'}), 200
+    else:
+        return jsonify({'message': "ERROR"}), 401
+    
+
+@app.route('/api/stock_details/<symbol>', methods=['POST'])
+def stock_details(symbol):
+    data = request.get_json()
+    symbol = data.get('symbol', symbol)
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={symbol}&apikey={API_KEY}'
+    response = requests.get(url)
+    return jsonify(response.json())
 
 
 
